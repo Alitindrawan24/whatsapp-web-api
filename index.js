@@ -67,6 +67,25 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
                 console.log(error)
             });
         })
+
+        app.get('/contacts/:phone_number', async(req, res) => {
+            const { phone_number } = req.params
+
+            const contact = await client.getContactById(phone_number + '@c.us');
+
+            res.json({ contact });
+        })
+
+        app.get('/chats/:phone_number', async(req, res) => {
+            try {
+                const { phone_number } = req.params
+                let chat = await client.getChatById(phone_number + '@c.us');
+                let messages = await chat.fetchMessages()
+                res.json({ messages })
+            } catch (error) {
+                res.json({ error })
+            }
+        })
     });
 
     client.initialize();

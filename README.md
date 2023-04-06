@@ -42,6 +42,8 @@ npm run start
 ## Endpoints
 - ```POST /``` send message using parameter ```phone_number``` and ```message``` in body
 - ```POST /logout``` logout from current session
+- ```GET /contacts/{phone_number}``` get contact information from phone number
+- ```GET /chats/{phone_number}``` get chat information from phone number
 
 ## Warning
 By using this app will potentially cause your WhatsApp Account to be banned. To avoid the risk, please use safe WhatsApp Account for scanning the QR Code.
