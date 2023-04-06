@@ -40,7 +40,8 @@ npm run start
 - After successful authenticated, you can send message using the API
 
 ## Endpoints
-- ```POST/``` send message using parameter ```phone_number``` and ```message``` in body
+- ```POST /``` send message using parameter ```phone_number``` and ```message``` in body
+- ```POST /logout``` logout from current session
 
 ## Warning
 By using this app will potentially cause your WhatsApp Account to be banned. To avoid the risk, please use safe WhatsApp Account for scanning the QR Code.

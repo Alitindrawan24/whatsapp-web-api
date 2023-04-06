@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
         })
     });
 
-    // Listen event 'authenticated'
+    // listen event 'authenticated'
     client.on('authenticated', (session) => {
         console.log('Authenticated');
     });
@@ -38,6 +38,11 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
         qrcode.generate(qr, { small: true });
     });
 
+    // listen for disconnected
+    client.on('disconnected', (reason) => {
+        console.log('Client was logged out', reason);
+    });
+
     client.on('ready', () => {
         console.log('Client is ready!');
 
@@ -48,7 +53,17 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
                 res.send('Message sent successfully!');
                 console.log(response)
             }).catch((error) => {
-                res.error('Something went wrong on sending message!');
+                res.send('Something went wrong on sending message!');
+                console.log(error)
+            });
+        })
+
+        // route for logout request
+        app.post('/logout', (req, res) => {
+            client.logout().then(async(response) => {
+                res.send('Logout successfully!');
+            }).catch((error) => {
+                res.send('Something went wrong on logout!');
                 console.log(error)
             });
         })
