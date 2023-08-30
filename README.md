@@ -20,7 +20,7 @@ And also you need to have Mongo DB installed on your computer for saving WhatsAp
 Once you have Node Js and Mongo DB installed, follow these steps:
 - Clone the repository to your local machine using
 ```bash
-git clone https://github.com/Alitindrawan24/taste-bin.git
+git clone https://github.com/Alitindrawan24/whatsapp-web-api.git
 ```
 - Navigate to the project directory using the command line.
 - Create .env file from .env.example and setup .env with your environment configuration
